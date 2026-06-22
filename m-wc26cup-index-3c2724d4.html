@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>世界杯 ─ 知识、日程与持续关注</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: #f2f8fe;
+            line-height: 1.7;
+            color: #1d2b32;
+            padding: 0 0 2.5rem 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ===== hero 区 ===== */
+        .hero {
+            background: linear-gradient(145deg, #d9f2f0 0%, #c3e5e2 100%);
+            margin: 1.5rem 1.5rem 2.5rem 1.5rem;
+            border-radius: 2.5rem 2.5rem 2rem 2rem;
+            padding: 3rem 2rem 2.8rem 2rem;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0, 90, 80, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "⚽";
+            font-size: 6rem;
+            opacity: 0.08;
+            position: absolute;
+            right: -10px;
+            bottom: -20px;
+            transform: rotate(12deg);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #035755, #1f7c7a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #215a5a;
+            max-width: 600px;
+            margin: 0 auto 1.2rem auto;
+            font-weight: 400;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(3px);
+            padding: 0.6rem 1.6rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            color: #0d4d4b;
+            border: 1px solid rgba(10, 110, 100, 0.2);
+            margin-top: 0.5rem;
+        }
+
+        /* ===== 网格卡片系统（优势 + 说明） ===== */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0 2.5rem 0;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 1.8rem;
+            padding: 1.8rem 1.6rem;
+            box-shadow: 0 4px 16px rgba(0, 70, 60, 0.04);
+            transition: box-shadow 0.15s ease, transform 0.1s ease;
+            border: 1px solid rgba(110, 180, 170, 0.15);
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 28px rgba(0, 100, 80, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #025a56;
+            margin: 0.5rem 0 0.6rem 0;
+            letter-spacing: -0.3px;
+        }
+
+        .card p {
+            color: #2d4a4a;
+            font-size: 0.98rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .card .small-note {
+            font-size: 0.85rem;
+            color: #46706e;
+            margin-top: 0.8rem;
+            border-top: 1px dashed #b3d3cf;
+            padding-top: 0.6rem;
+        }
+
+        /* ===== 说明区（知识长段落） ===== */
+        .explainer-block {
+            background: #ffffff;
+            border-radius: 2rem;
+            padding: 2rem 1.8rem;
+            margin: 2rem 0 2rem 0;
+            border-left: 6px solid #1a9b92;
+            box-shadow: 0 4px 12px rgba(0, 80, 60, 0.02);
+        }
+
+        .explainer-block h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #034d49;
+            margin-bottom: 1rem;
+        }
+
+        .explainer-block p {
+            margin-bottom: 1rem;
+            color: #254240;
+        }
+
+        .explainer-block a {
+            color: #0b7b74;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1.5px;
+            font-weight: 500;
+        }
+
+        .explainer-block a:hover {
+            color: #044d49;
+            text-decoration-color: #044d49;
+        }
+
+        /* ===== FAQ 摘要（卡片风格） ===== */
+        .faq-summary {
+            background: #e6f3f0;
+            border-radius: 2rem;
+            padding: 1.8rem 1.8rem 1.5rem 1.8rem;
+            margin: 2rem 0 2.2rem 0;
+        }
+
+        .faq-summary h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #034d49;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #bfdbd5;
+        }
+
+        .faq-item:last-child {
+            border-bottom: 0;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #084f4b;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            font-size: 0.95rem;
+            color: #2b5c58;
+            padding-left: 0.5rem;
+        }
+
+        .faq-a a {
+            color: #0b7b74;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        /* ===== 底部链接 / 收藏提示 ===== */
+        .footer-links {
+            margin-top: 2.2rem;
+            padding: 1.6rem 1.5rem;
+            background: #ffffffde;
+            backdrop-filter: blur(2px);
+            border-radius: 2rem;
+            text-align: center;
+            border: 1px solid rgba(25, 125, 115, 0.1);
+            font-size: 0.95rem;
+        }
+
+        .footer-links p {
+            color: #315f5b;
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-links a {
+            color: #0b7b74;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            font-weight: 500;
+        }
+
+        .footer-links .fav-tip {
+            background: #ecf8f5;
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            margin-top: 0.6rem;
+            color: #1c635e;
+        }
+
+        hr {
+            border: 0;
+            border-top: 2px dotted #b9d6d0;
+            margin: 2rem 0 0.5rem 0;
+            opacity: 0.5;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 700px) {
+            .hero {
+                margin: 0.8rem 0.8rem 1.8rem 0.8rem;
+                padding: 2.2rem 1.2rem 2rem 1.2rem;
+                border-radius: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .explainer-block {
+                padding: 1.5rem 1.2rem;
+                border-left-width: 4px;
+            }
+
+            .faq-summary {
+                padding: 1.4rem 1.2rem;
+            }
+
+            .footer-links {
+                padding: 1.2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .faq-q {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- hero 区：再次访问 / 收藏 角度 -->
+        <div class="hero">
+            <h1>⚽ 世界杯 · 持续关注</h1>
+            <p>赛事信息、赛程备忘与深度内容 — 每一次重返，都有新收获。</p>
+            <div class="tagline">★ 把「世界杯」加入收藏夹，随时回来</div>
+        </div>
+
+        <!-- 优势区：双卡片（网格） -->
+        <div class="grid-2col">
+            <div class="card">
+                <span class="card-icon">📌</span>
+                <h3>为什么再次访问？</h3>
+                <p>赛程、分组与球队动态不断更新。一次收藏，长期回看，不必每次重新搜索。</p>
+                <div class="small-note">⏳ 关键场次信息持续补充中</div>
+            </div>
+            <div class="card">
+                <span class="card-icon">🧠</span>
+                <h3>知识型阅读节奏</h3>
+                <p>不只比分，还有战术简析、历史对照与赛事脉络。适合想更深入了解的球迷。</p>
+                <div class="small-note">📖 每轮比赛后会有复盘提炼</div>
+            </div>
+        </div>
+
+        <!-- 说明区：偏长段落，强调持续关注的价值 -->
+        <div class="explainer-block">
+            <h2>把「世界杯」放在手边</h2>
+            <p>一届大赛的意义不止于决赛夜。小组赛的冷门、淘汰赛的转折、老将的告别与新星的闪耀，构成需要时间消化的大量细节。很多球迷会在赛事期间反复回到同一个信息据点，查时间、看回顾、厘清晋级路线。</p>
+            <p><a href="https://m-wc26cup.com">世界杯</a> 正是这样一个可以常回来看看的页面。没有花哨的弹窗，没有催促点击的按钮，只提供干净的赛事内容。当你想要确认下一场开球时间，或是想重新读一读某支球队的晋级分析，打开收藏夹点开即可。</p>
+            <p>赛期密集，记忆容易模糊。把页面加入浏览器收藏夹或手机主屏幕，等于给自己留了一条随时返回的捷径。比赛结束后，页面还会保留回顾性的内容，供你慢慢翻看。</p>
+        </div>
+
+        <!-- FAQ 摘要（三个问答，自然承接） -->
+        <div class="faq-summary">
+            <h2>❓ 常被问到的几点</h2>
+
+            <div class="faq-item">
+                <div class="faq-q">Q：页面会频繁更改地址吗？</div>
+                <div class="faq-a">不会。建议直接收藏 <a href="https://m-wc26cup.com">世界杯</a> 当前链接，长期有效。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Q：是否包含实时比分？</div>
+                <div class="faq-a">以信息整合与赛程为主，简洁呈现关键节点，适合赛前赛后查阅。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">Q：移动端浏览体验如何？</div>
+                <div class="faq-a">完全适配手机屏幕，卡片清晰，字体大小舒适，无需缩放。</div>
+            </div>
+        </div>
+
+        <!-- 底部链接 / 收藏提示 -->
+        <div class="footer-links">
+            <p>🔖 如果觉得有用，可以将 <a href="https://m-wc26cup.com">世界杯</a> 加入浏览器收藏夹或手机桌面。</p>
+            <p>页面内容保持克制更新，不做夸张推送，只做可靠的内容整理。</p>
+            <span class="fav-tip">★ 收藏后每次从收藏夹打开，即是最新状态</span>
+        </div>
+
+        <!-- 极简分隔 + 辅助提示 -->
+        <hr>
+        <p style="text-align:center; font-size:0.8rem; color:#648f8a; margin-top:0.3rem;">
+            ⚽ 持续关注 · 内容方向偏知识型 · 无诱导点击
+        </p>
+    </div>
+</body>
+</html>
